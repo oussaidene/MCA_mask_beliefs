@@ -1,0 +1,23 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1643129598536.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1832677313",
+    "id" : "809CE675",
+    "lastKnownWriteTime" : 1643235585,
+    "last_content_update" : 1643235585133,
+    "path" : "E:/Projects/2CS/ANAD/TP02/tp2.R",
+    "project_path" : "tp2.R",
+    "properties" : {
+        "cursorPosition" : "126,0",
+        "scrollLine" : "0",
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

@@ -1,0 +1,132 @@
+# Lecture des données
+print(paste("The dataset contains", rows_data, "rows and", cols_data, "columns"))
+
+# na.strings=c("") : remplacer les chaines de caracteres vides avec NA
+data <- read.csv("MaskBeliefs.csv", header = TRUE, na.strings=c("")) 
+
+# Suppression des colones qui ne representent pas des variables qualitatifs
+data$Timestamp<- NULL
+data$Age<- NULL
+data$Restaurant <- NULL
+
+# Affichage des noms de colonnes retenues
+colnames(data)
+
+# Affichage du nombre de valeurs manquantes
+sum_na <- sum(is.na(data))
+print(paste("Le nombre des NAs dans notre dataset est :", sum_na))
+
+# Suppression des NAs
+data = na.omit(data) 
+
+# Reaffichage du nombre de valeurs manquantes pour verefication
+sum_na_apres <- sum(is.na(data))
+print(paste("Le nombre des NAs dans notre dataset est :", sum_na_apres))
+
+##        Etude statistique        ##
+
+# Afficher le tableau des statistiques de la variable Boarding
+fct_count(data$Boarding , prop = TRUE, sort = TRUE) %>%
+  rename("Boarding" = "f", "freq" = "p", "nb" = "n") %>%
+  mutate(freq = round(freq, 2))
+
+
+# Plotter la distribution de la variable Boarding
+library(tidyverse) 
+ggplot(data.frame(data), aes(x = Boarding)) +
+  geom_bar(colour = "black", fill = "#6082B6")+ 
+  labs(title = "La distribution de la variable 'Boarding' ") +
+  theme(plot.title = element_text(hjust = 0.5, size=17), axis.text.x= element_text(size=14),
+        axis.text.y= element_text(size=14),  axis.title=element_text(size=16))
+
+# Afficher le tableau des statistiques de la variable Gender
+fct_count(data$Gender , prop = TRUE, sort = TRUE) %>%
+  rename("Gender" = "f", "freq" = "p", "nb" = "n") %>%
+  mutate(freq = round(freq, 2))
+
+
+# Plotter la distribution de la variable Gender
+ggplot(data.frame(data), aes(x = Gender)) +
+  geom_bar(colour = "black", fill = "#6082B6")+ 
+  labs(title = "La distribution de la variable 'Gender' ") +
+  theme(plot.title = element_text(hjust = 0.5, size=17), axis.text.x= element_text(size=14),
+        axis.text.y= element_text(size=14),  axis.title=element_text(size=16))
+
+
+# Afficher le tableau des statistiques de la variable ResidentialElder
+fct_count(data$ResidentialElder , prop = TRUE, sort = TRUE) %>%
+  rename("ResidentialElder" = "f", "freq" = "p", "nb" = "n") %>%
+  mutate(freq = round(freq, 2))
+
+
+# Plotter la distribution de la variable ResidentialElder
+ggplot(data.frame(data), aes(x = ResidentialElder)) +
+  geom_bar(colour = "black", fill = "#6082B6")+ 
+  labs(title = "La distribution de la variable 'ResidentialElder'") +
+  theme(plot.title = element_text(hjust = 0.5, size=17), axis.text.x= element_text(size=14),
+        axis.text.y= element_text(size=14),  axis.title=element_text(size=16))
+
+
+# Afficher le tableau des statistiques de la variable InteractedElder
+fct_count(data$InteractedElder , prop = TRUE, sort = TRUE) %>%
+  rename("InteractedElder" = "f", "freq" = "p", "nb" = "n") %>%
+  mutate(freq = round(freq, 2))
+
+
+# Plotter la distribution de la variable InteractedElder
+ggplot(data.frame(data), aes(x = InteractedElder)) +
+  geom_bar(colour = "black", fill = "#6082B6")+ 
+  labs(title = "La distribution de la variable 'InteractedElder'") +
+  theme(plot.title = element_text(hjust = 0.5, size=17), axis.text.x= element_text(size=14),
+        axis.text.y= element_text(size=14),  axis.title=element_text(size=16))
+
+
+# Afficher le tableau des statistiques de la variable PreventSpread
+fct_count(data$PreventSpread , prop = TRUE, sort = TRUE) %>%
+  rename("PreventSpread" = "f", "freq" = "p", "nb" = "n") %>%
+  mutate(freq = round(freq, 2))
+
+
+# Plotter la distribution de la variable PreventSpread
+ggplot(data.frame(data), aes(x = PreventSpread)) +
+  geom_bar(colour = "black", fill = "#6082B6")+ 
+  labs(title = "La distribution de la variable 'PreventSpread'") +
+  theme(plot.title = element_text(hjust = 0.5, size=17), axis.text.x= element_text(size=14),
+        axis.text.y= element_text(size=14),  axis.title=element_text(size=16))
+
+
+# Afficher le tableau des statistiques de la variable Reason
+fct_count(data$Reason , prop = TRUE, sort = TRUE) %>%
+  rename("Reason" = "f", "freq" = "p", "nb" = "n") %>%
+  mutate(freq = round(freq, 2))
+
+
+# Plotter la distribution de la variable Reason
+ggplot(data.frame(data), aes(x = Reason)) +
+  geom_bar(colour = "black", fill = "#6082B6")+ 
+  labs(title = "La distribution de la variable 'Reason' ") +
+  theme(plot.title = element_text(hjust = 0.5, size=17), axis.text.x= element_text(angle = 60, hjust = 1, size=10),
+        axis.text.y= element_text(size=14),  axis.title=element_text(size=16))
+
+
+# Afficher le tableau des statistiques de la variable Public
+fct_count(data$Public , prop = TRUE, sort = TRUE) %>%
+  rename("Public" = "f", "freq" = "p", "nb" = "n") %>%
+  mutate(freq = round(freq, 2))
+
+
+# Plotter la distribution de la variable Public
+ggplot(data.frame(data), aes(x = Public)) +
+  geom_bar(colour = "black", fill = "#6082B6")+ 
+  labs(title = "La distribution de la variable 'Public'") +
+  theme(plot.title = element_text(hjust = 0.5, size=17), axis.text.x= element_text(size=14),
+        axis.text.y= element_text(size=14),  axis.title=element_text(size=16))
+
+library("FactoMineR")
+disjonctif_table = tab.disjonctif(data)
+afcm = MCA(data)
+
+
+gender_boarding <- table(data$Gender, data$Boarding)
+heatmap(gender_boarding)
+#, stringsAsFactors = FALSE

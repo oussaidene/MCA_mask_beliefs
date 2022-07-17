@@ -1,0 +1,23 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1643217187825.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1897976670",
+    "id" : "6D43F17A",
+    "lastKnownWriteTime" : 1643736995,
+    "last_content_update" : 1643736995105,
+    "path" : "E:/Projects/2CS/ANAD/TP02/tp_new.R",
+    "project_path" : "tp_new.R",
+    "properties" : {
+        "cursorPosition" : "411,0",
+        "scrollLine" : "386",
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
